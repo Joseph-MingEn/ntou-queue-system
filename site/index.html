@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="簡單好用的線上候位登記與叫號系統。">
+  <title>小巷食堂｜線上候位</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="小巷食堂首頁"><span class="brand-icon">巷</span><span><b>小巷食堂</b><small>ALLEY KITCHEN · SINCE 2018</small></span></a>
+      <div class="open-status"><i></i><span id="serviceStatus">今日候位中</span></div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">GOOD FOOD, NO RUSH.</p>
+        <h1>好好吃飯，<br><em>不用久等。</em></h1>
+        <p>先取候位號碼，附近逛逛也沒關係。輪到你時，記得回來找我們喔。</p>
+        <div class="hero-note"><span>✳</span> 現場候位・依序入座 <span class="note-dot">·</span> 今日營業 11:30 — 21:00</div>
+      </div>
+      <div class="hero-art" aria-label="小巷食堂熱騰騰的餐點插畫" role="img">
+        <div class="sun"></div><div class="steam steam-one"></div><div class="steam steam-two"></div>
+        <div class="bowl"><div class="soup"><span class="garnish garnish-one"></span><span class="garnish garnish-two"></span><span class="noodle"></span><span class="egg"><i></i></span><span class="greens">✿</span></div><div class="bowl-rim"></div></div>
+        <span class="art-label">made with care <b>♡</b></span>
+      </div>
+    </section>
+
+    <section class="dashboard" aria-label="候位系統">
+      <article class="card register-card" id="register">
+        <div class="card-heading"><div><p class="eyebrow">TAKE A NUMBER</p><h2>登記候位</h2></div><span class="step-badge">01 <span>／</span> 02</span></div>
+        <p class="card-intro">留下聯絡資料，我們會為你保留候位順序。</p>
+        <form id="registerForm" novalidate>
+          <label for="guestName">姓名 <span>NAME</span></label>
+          <input id="guestName" name="name" type="text" placeholder="怎麼稱呼你？" maxlength="24" autocomplete="name" required>
+          <label for="guestPhone">聯絡電話 <span>PHONE</span></label>
+          <input id="guestPhone" name="phone" type="tel" placeholder="09xx-xxx-xxx" maxlength="20" autocomplete="tel" required>
+          <button class="primary-button" type="submit"><span>加入候位名單</span><b>→</b></button>
+          <p class="privacy-note">🔒　資料僅用於本次候位聯絡</p>
+        </form>
+        <div id="ticketResult" class="ticket-result" aria-live="polite" hidden></div>
+      </article>
+
+      <article class="card queue-card">
+        <div class="queue-top"><div><p class="eyebrow">NOW SERVING</p><h2>目前叫號</h2></div><span class="live-tag"><i></i> LIVE</span></div>
+        <div class="now-ticket"><span class="ticket-caption">請留意你的號碼</span><strong id="currentNumber">— —</strong><span class="current-name" id="currentName">等待第一組客人</span></div>
+        <div class="queue-summary"><div><span class="summary-number" id="waitingCount">0</span><span>組候位中</span></div><div><span class="summary-number" id="estimatedWait">約 0</span><span>分鐘等候</span></div></div>
+        <div class="queue-footer"><span>叫號依現場入座狀況為準</span><span class="flower">✳</span></div>
+      </article>
+    </section>
+
+    <section class="operator card" id="operator" aria-label="機台操作">
+      <div class="operator-heading"><div><p class="eyebrow">STAFF ONLY</p><h2>候位機台</h2></div><span class="operator-hint">店員操作面板</span></div>
+      <div class="operator-grid">
+        <div class="operator-actions">
+          <button id="callNext" class="call-button" type="button"><span class="call-symbol">↗</span><span><b>叫下一位</b><small>通知下一組客人入座</small></span><strong>→</strong></button>
+          <button id="previewNext" class="preview-button" type="button">看下一位候位 <span>→</span></button>
+          <div class="action-pair"><button id="toggleList" class="secondary-button" type="button">查看候補名單 <b id="listChevron">＋</b></button><button id="closeDay" class="close-button" type="button">打烊清空</button></div>
+          <div class="search-box"><label for="searchNumber">輸入編號查詢</label><div class="search-row"><input id="searchNumber" type="search" placeholder="例如：A003" autocomplete="off"><button id="searchButton" type="button" aria-label="查詢編號">查詢</button></div><p id="searchResult" class="search-result" aria-live="polite">可查詢候位中或已叫號的客人</p></div>
+        </div>
+        <div class="waitlist-panel" id="waitlistPanel" hidden>
+          <div class="list-heading"><b>候補名單</b><span id="listCount">0 組</span></div>
+          <div id="waitlist" class="waitlist"><p class="empty-list">目前還沒有候位客人。</p></div>
+        </div>
+      </div>
+      <div class="machine-foot"><span>今日號碼 <b id="todayCount">0</b></span><span>候位資料儲存在此裝置</span></div>
+    </section>
+
+    <footer><div class="footer-brand">小巷食堂 <span>✳</span></div><p>巷口轉進來，好好吃一頓。</p><small>QUEUE SYSTEM <span>·</span> 2026</small></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
