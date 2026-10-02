@@ -85,8 +85,6 @@ button:active:not(:disabled) { transform: scale(.98); }
 .steam { position: absolute; z-index: 2; top: 38px; width: 2px; height: 26px; transform: rotate(15deg); border-radius: 50%; background: #fdf9ef; opacity: .8; }
 .steam-one { left: 47%; }
 .steam-two { top: 30px; left: 55%; height: 21px; transform: rotate(-12deg); }
-.art-label { position: absolute; right: 25px; bottom: 24px; transform: rotate(-7deg); color: #465b43; font: 12px var(--mono); }
-.art-label b { color: var(--orange); }
 
 .dashboard { display: grid; grid-template-columns: .95fr 1.05fr; gap: 16px; }
 .card { border: 1px solid #e8e8ed; border-radius: var(--card-radius); background: var(--surface); box-shadow: 0 8px 32px #1d1d1f08; }
@@ -258,7 +256,6 @@ footer small span { color: var(--orange); }
   .hero h1 { color: var(--ink); }
   .hero h1 em, .footer-brand, .machine-foot b { color: #a7c7a7; }
   .hero-art { border-color: #3c4b3f; background: #252d28; }
-  .art-label { color: #d4dfd0; }
   .card { border-color: #383a3f; box-shadow: 0 8px 32px #00000020; }
   .card h2, .operator h2 { color: var(--ink); }
   .register-card form label, .search-box>label, .list-heading { color: #d7d9df; }
